@@ -1,0 +1,250 @@
+[
+  {
+    "client_id": "MH-101",
+    "preferred_name": "Alex Rivera",
+    "pronouns": "they/them",
+    "consent_matrix": {
+      "share_trauma_history": false,
+      "share_medical_diagnosis": true,
+      "share_social_determinants": true,
+      "share_substance_history": false,
+      "share_third_party": false,
+      "allowed_roles": ["counsellor", "social_worker"]
+    },
+    "active_goals": [
+      {
+        "id": "G-101",
+        "title": "Secure Permanent Housing Support",
+        "category": "housing",
+        "status": "in_progress",
+        "priority": "high",
+        "assigned_role": "social_worker"
+      },
+      {
+        "id": "G-102",
+        "title": "5-4-3-2-1 Sensory Grounding for Panic Attacks",
+        "category": "coping",
+        "status": "active",
+        "priority": "medium",
+        "assigned_role": "counsellor"
+      }
+    ],
+    "pending_actions": [
+      {
+        "id": "A-101",
+        "assigned_role": "social_worker",
+        "description": "Submit municipal housing subsidy request form",
+        "due_date": "2026-09-15",
+        "status": "pending"
+      },
+      {
+        "id": "A-102",
+        "assigned_role": "counsellor",
+        "description": "Review sleep hygiene tracking sheet next session",
+        "due_date": "2026-09-12",
+        "status": "in_progress"
+      }
+    ],
+    "session_notes": [
+      {
+        "session_id": "S-101",
+        "date": "2026-08-15",
+        "author_role": "counsellor",
+        "summary": "Client discussed severe childhood trauma and family violence. Experiencing persistent nightmares.",
+        "sensitive_categories": ["trauma_history"],
+        "risk_level": "moderate",
+        "quality_score": 0.95
+      },
+      {
+        "session_id": "S-102",
+        "date": "2026-08-28",
+        "author_role": "social_worker",
+        "summary": "Assisted Alex with local food bank schedule and utility bill relief grant application. Client expressed anxiety over upcoming eviction threat.",
+        "sensitive_categories": ["social_determinants"],
+        "risk_level": "low",
+        "quality_score": 0.9
+      }
+    ]
+  },
+  {
+    "client_id": "MH-102",
+    "preferred_name": "Jordan Chen",
+    "pronouns": "he/him",
+    "consent_matrix": {
+      "share_trauma_history": false,
+      "share_medical_diagnosis": false,
+      "share_social_determinants": true,
+      "share_substance_history": false,
+      "share_third_party": false,
+      "allowed_roles": ["counsellor", "social_worker"]
+    },
+    "active_goals": [
+      {
+        "id": "G-201",
+        "title": "Resume Part-Time Community Employment",
+        "category": "social",
+        "status": "active",
+        "priority": "medium",
+        "assigned_role": "social_worker"
+      }
+    ],
+    "pending_actions": [
+      {
+        "id": "A-201",
+        "assigned_role": "social_worker",
+        "description": "Connect with local vocational training program coordinator",
+        "due_date": "2026-09-20",
+        "status": "pending"
+      }
+    ],
+    "session_notes": [
+      {
+        "session_id": "S-201",
+        "date": "2026-08-10",
+        "author_role": "counsellor",
+        "summary": "Client disclosed history of PTSD from industrial accident and ongoing prescription opioid use.",
+        "sensitive_categories": ["trauma_history", "substance_history"],
+        "risk_level": "moderate",
+        "quality_score": 0.88
+      },
+      {
+        "session_id": "S-202",
+        "date": "2026-09-01",
+        "author_role": "counsellor",
+        "summary": "Jordan updated consent choices to revoke trauma and substance history sharing. Focus shifted entirely to vocational reintegration.",
+        "sensitive_categories": [],
+        "risk_level": "low",
+        "quality_score": 0.92
+      }
+    ]
+  },
+  {
+    "client_id": "MH-103",
+    "preferred_name": "Sam Taylor",
+    "pronouns": "she/her",
+    "consent_matrix": {
+      "share_trauma_history": true,
+      "share_medical_diagnosis": true,
+      "share_social_determinants": true,
+      "share_substance_history": true,
+      "share_third_party": false,
+      "allowed_roles": ["counsellor", "social_worker"]
+    },
+    "active_goals": [
+      {
+        "id": "G-301",
+        "title": "Anxiety Reduction",
+        "category": "psychological",
+        "status": "blocked",
+        "priority": "high",
+        "assigned_role": "counsellor"
+      }
+    ],
+    "pending_actions": [
+      {
+        "id": "A-301",
+        "assigned_role": "social_worker",
+        "description": "Call",
+        "due_date": "",
+        "status": "pending"
+      }
+    ],
+    "session_notes": [
+      {
+        "session_id": "S-301",
+        "date": "",
+        "author_role": "counsellor",
+        "summary": "Upset session. Notes corrupt.",
+        "sensitive_categories": [],
+        "risk_level": "moderate",
+        "quality_score": 0.3
+      }
+    ]
+  },
+  {
+    "client_id": "MH-104",
+    "preferred_name": "Morgan Blake",
+    "pronouns": "they/them",
+    "consent_matrix": {
+      "share_trauma_history": true,
+      "share_medical_diagnosis": true,
+      "share_social_determinants": true,
+      "share_substance_history": true,
+      "share_third_party": false,
+      "allowed_roles": ["counsellor", "social_worker"]
+    },
+    "active_goals": [
+      {
+        "id": "G-401",
+        "title": "Manage Bipolar Mood Swings",
+        "category": "medical",
+        "status": "in_progress",
+        "priority": "high",
+        "assigned_role": "counsellor"
+      }
+    ],
+    "pending_actions": [
+      {
+        "id": "A-401",
+        "assigned_role": "social_worker",
+        "description": "Arrange transportation for psychiatric medication review",
+        "due_date": "2026-09-18",
+        "status": "pending"
+      }
+    ],
+    "session_notes": [
+      {
+        "session_id": "S-401",
+        "date": "2026-09-02",
+        "author_role": "counsellor",
+        "summary": "Diagnosed with DSM-5 Bipolar I disorder (F31.1). Psychiatrist recommended quetiapine dosage titration. Social worker needs to ensure transport.",
+        "sensitive_categories": ["medical_diagnosis"],
+        "risk_level": "moderate",
+        "quality_score": 0.95
+      }
+    ]
+  },
+  {
+    "client_id": "MH-105",
+    "preferred_name": "Casey Vance",
+    "pronouns": "ze/zir",
+    "consent_matrix": {
+      "share_trauma_history": false,
+      "share_medical_diagnosis": false,
+      "share_social_determinants": true,
+      "share_substance_history": false,
+      "share_third_party": false,
+      "allowed_roles": ["counsellor"]
+    },
+    "active_goals": [
+      {
+        "id": "G-501",
+        "title": "Crisis De-escalation & Safety Plan",
+        "category": "psychological",
+        "status": "active",
+        "priority": "high",
+        "assigned_role": "counsellor"
+      }
+    ],
+    "pending_actions": [
+      {
+        "id": "A-501",
+        "assigned_role": "duty_team",
+        "description": "Conduct 24h safety follow-up call",
+        "due_date": "2026-09-10",
+        "status": "pending"
+      }
+    ],
+    "session_notes": [
+      {
+        "session_id": "S-501",
+        "date": "2026-09-08",
+        "author_role": "counsellor",
+        "summary": "Casey expressed intense distress and history of self-harm. Social worker attempted to access record but client consent restricts allowed_roles to counsellor only.",
+        "sensitive_categories": ["trauma_history"],
+        "risk_level": "high",
+        "quality_score": 0.9
+      }
+    ]
+  }
+]
