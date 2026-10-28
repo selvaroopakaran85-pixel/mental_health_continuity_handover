@@ -64,6 +64,7 @@ class SessionNote(BaseModel):
     session_id: str
     date: Optional[str] = None
     author_role: RoleEnum
+    author_name: Optional[str] = "Staff Clinician"
     summary: str
     sensitive_categories: List[ConsentCategory] = Field(default_factory=list)
     risk_level: str = "low"  # low, moderate, high, crisis

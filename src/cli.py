@@ -14,15 +14,13 @@ from src.engine.summary_engine import SummaryEngine
 from src.evaluation.benchmark import HandoverBenchmark, print_benchmark_report
 
 
-DATA_PATH = os.path.join(
-    os.path.dirname(__file__), "..", "data", "synthetic_clients.json"
-)
+from src.db.database import DatabaseManager
 
 
 def load_clients():
-    with open(DATA_PATH, "r", encoding="utf-8") as f:
-        data = json.load(f)
-    return [ClientProfile(**item) for item in data]
+    db = DatabaseManager()
+    client_ids = db.list_client_ids()
+    return [db.get_client_profile(cid) for cid in client_ids]
 
 
 def main():

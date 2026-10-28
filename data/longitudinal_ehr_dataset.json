@@ -1,0 +1,508 @@
+[
+  {
+    "client_id": "MH-201",
+    "preferred_name": "Elena Rostova",
+    "pronouns": "she/her",
+    "consent_matrix": {
+      "share_trauma_history": false,
+      "share_medical_diagnosis": true,
+      "share_social_determinants": true,
+      "share_substance_history": false,
+      "share_third_party": false,
+      "allowed_roles": ["counsellor", "social_worker", "duty_team", "medical_clinician"]
+    },
+    "active_goals": [
+      {
+        "id": "G-201",
+        "title": "Housing Stabilization & Rental Assistance",
+        "category": "housing",
+        "status": "in_progress",
+        "priority": "high",
+        "assigned_role": "social_worker"
+      },
+      {
+        "id": "G-202",
+        "title": "Diaphragmatic Breathing & Panic De-escalation",
+        "category": "coping",
+        "status": "active",
+        "priority": "high",
+        "assigned_role": "counsellor"
+      },
+      {
+        "id": "G-203",
+        "title": "Medication Compliance & Mood Tracking",
+        "category": "medical",
+        "status": "active",
+        "priority": "medium",
+        "assigned_role": "medical_clinician"
+      }
+    ],
+    "pending_actions": [
+      {
+        "id": "A-201",
+        "assigned_role": "social_worker",
+        "description": "Submit Section 8 housing application paperwork to housing authority",
+        "due_date": "2026-10-15",
+        "status": "pending"
+      },
+      {
+        "id": "A-202",
+        "assigned_role": "medical_clinician",
+        "description": "Review serum lab results for mood stabilizer titration",
+        "due_date": "2026-10-12",
+        "status": "in_progress"
+      },
+      {
+        "id": "A-203",
+        "assigned_role": "duty_team",
+        "description": "Conduct 48-hour welfare check call",
+        "due_date": "2026-10-08",
+        "status": "pending"
+      }
+    ],
+    "session_notes": [
+      {
+        "session_id": "EHR-01",
+        "date": "2026-06-01",
+        "author_role": "duty_team",
+        "author_name": "Nurse Kelly, RN",
+        "summary": "Initial intake completed. Client presented with acute panic symptoms and stress over impending apartment lease non-renewal.",
+        "sensitive_categories": ["social_determinants"],
+        "risk_level": "moderate",
+        "quality_score": 0.92
+      },
+      {
+        "session_id": "EHR-02",
+        "date": "2026-06-15",
+        "author_role": "medical_clinician",
+        "author_name": "Dr. Smith, MD",
+        "summary": "Psychiatric evaluation completed. Diagnosed with Major Depressive Disorder (DSM-5 F32.1). Started low-dose SSRI sertraline 50mg daily.",
+        "sensitive_categories": ["medical_diagnosis"],
+        "risk_level": "moderate",
+        "quality_score": 0.95
+      },
+      {
+        "session_id": "EHR-03",
+        "date": "2026-07-02",
+        "author_role": "counsellor",
+        "author_name": "Sarah Miller, LPC",
+        "summary": "Client disclosed history of childhood domestic instability and family trauma. Introduced diaphragmatic breathing techniques.",
+        "sensitive_categories": ["trauma_history"],
+        "risk_level": "moderate",
+        "quality_score": 0.9
+      },
+      {
+        "session_id": "EHR-04",
+        "date": "2026-07-20",
+        "author_role": "social_worker",
+        "author_name": "Mark Davis, MSW",
+        "summary": "Met with Elena to complete emergency rental assistance grant forms and review food pantry locations near temporary shelter.",
+        "sensitive_categories": ["social_determinants"],
+        "risk_level": "low",
+        "quality_score": 0.94
+      },
+      {
+        "session_id": "EHR-05",
+        "date": "2026-08-05",
+        "author_role": "medical_clinician",
+        "author_name": "Dr. Smith, MD",
+        "summary": "Follow-up visit. Sertraline dose adjusted to 75mg daily. Client reporting improved sleep patterns and reduced panic frequency.",
+        "sensitive_categories": ["medical_diagnosis"],
+        "risk_level": "low",
+        "quality_score": 0.96
+      },
+      {
+        "session_id": "EHR-06",
+        "date": "2026-08-22",
+        "author_role": "counsellor",
+        "author_name": "Sarah Miller, LPC",
+        "summary": "Explored grounding strategies for anxiety triggers. Elena updated consent settings to restrict trauma history sharing in general handovers.",
+        "sensitive_categories": ["trauma_history"],
+        "risk_level": "low",
+        "quality_score": 0.91
+      },
+      {
+        "session_id": "EHR-07",
+        "date": "2026-09-10",
+        "author_role": "social_worker",
+        "author_name": "Mark Davis, MSW",
+        "summary": "Confirmed submission of housing voucher application. Client expressed relief and improved housing stability prospects.",
+        "sensitive_categories": ["social_determinants"],
+        "risk_level": "low",
+        "quality_score": 0.93
+      },
+      {
+        "session_id": "EHR-08",
+        "date": "2026-09-28",
+        "author_role": "duty_team",
+        "author_name": "Nurse Kelly, RN",
+        "summary": "After-hours check-in call. Client stable, practicing coping exercises, preparing for final housing interview.",
+        "sensitive_categories": [],
+        "risk_level": "low",
+        "quality_score": 0.88
+      }
+    ]
+  },
+  {
+    "client_id": "MH-202",
+    "preferred_name": "Marcus Vance",
+    "pronouns": "he/him",
+    "consent_matrix": {
+      "share_trauma_history": false,
+      "share_medical_diagnosis": true,
+      "share_social_determinants": true,
+      "share_substance_history": false,
+      "share_third_party": false,
+      "allowed_roles": ["counsellor", "social_worker", "duty_team", "medical_clinician"]
+    },
+    "active_goals": [
+      {
+        "id": "G-210",
+        "title": "Sustained Sobriety & Relapse Prevention Plan",
+        "category": "coping",
+        "status": "active",
+        "priority": "high",
+        "assigned_role": "counsellor"
+      },
+      {
+        "id": "G-211",
+        "title": "VA HUD-VASH Supportive Housing Placement",
+        "category": "housing",
+        "status": "in_progress",
+        "priority": "high",
+        "assigned_role": "social_worker"
+      },
+      {
+        "id": "G-212",
+        "title": "Nightmare De-escalation & Sleep Continuity",
+        "category": "psychological",
+        "status": "active",
+        "priority": "medium",
+        "assigned_role": "counsellor"
+      }
+    ],
+    "pending_actions": [
+      {
+        "id": "A-210",
+        "assigned_role": "social_worker",
+        "description": "Submit VA DD-214 and HUD-VASH housing application to municipal housing liaison",
+        "due_date": "2026-10-18",
+        "status": "pending"
+      },
+      {
+        "id": "A-211",
+        "assigned_role": "medical_clinician",
+        "description": "Evaluate Prazosin titration response for sleep disturbance and nocturnal panic",
+        "due_date": "2026-10-15",
+        "status": "in_progress"
+      },
+      {
+        "id": "A-212",
+        "assigned_role": "counsellor",
+        "description": "Develop trigger inventory for high-risk crowded social environments",
+        "due_date": "2026-10-20",
+        "status": "pending"
+      }
+    ],
+    "session_notes": [
+      {
+        "session_id": "EHR-10",
+        "date": "2026-05-10",
+        "author_role": "duty_team",
+        "author_name": "Nurse Kelly, RN",
+        "summary": "Crisis triage intake. Marcus arrived seeking community reintegration support following military discharge. Noted mild tremors and hyperarousal.",
+        "sensitive_categories": ["medical_diagnosis"],
+        "risk_level": "moderate",
+        "quality_score": 0.91
+      },
+      {
+        "session_id": "EHR-11",
+        "date": "2026-05-24",
+        "author_role": "medical_clinician",
+        "author_name": "Dr. Angela Chen, MD",
+        "summary": "Comprehensive psychiatric assessment. Formally diagnosed with Post-Traumatic Stress Disorder (DSM-5 F43.10) with combat-related nocturnal panic. Prescribed low-dose prazosin 1mg qhs.",
+        "sensitive_categories": ["medical_diagnosis"],
+        "risk_level": "moderate",
+        "quality_score": 0.96
+      },
+      {
+        "session_id": "EHR-12",
+        "date": "2026-06-12",
+        "author_role": "counsellor",
+        "author_name": "David Ross, CADC",
+        "summary": "Substance counseling session. Marcus celebrated 60 days of sobriety from severe alcohol dependency. Discussed cravings triggered by sensory sounds and hypervigilance in crowded spaces.",
+        "sensitive_categories": ["substance_history"],
+        "risk_level": "moderate",
+        "quality_score": 0.93
+      },
+      {
+        "session_id": "EHR-13",
+        "date": "2026-07-01",
+        "author_role": "social_worker",
+        "author_name": "Linda Gomez, LCSW",
+        "summary": "Housing intake. Reviewed HUD-VASH eligibility. Marcus is currently staying on a peer's couch; lease expires end of next month. Expedited housing voucher paperwork.",
+        "sensitive_categories": ["social_determinants"],
+        "risk_level": "low",
+        "quality_score": 0.94
+      },
+      {
+        "session_id": "EHR-14",
+        "date": "2026-08-14",
+        "author_role": "counsellor",
+        "author_name": "Sarah Miller, LPC",
+        "summary": "Trauma processing session. Marcus detailed severe combat ambush memories and loss of unit comrades in overseas tour. Introduced progressive muscle relaxation and grounding touchstones. Client explicitly requested to keep combat trauma details out of general housing and agency handovers.",
+        "sensitive_categories": ["trauma_history"],
+        "risk_level": "low",
+        "quality_score": 0.92
+      },
+      {
+        "session_id": "EHR-15",
+        "date": "2026-09-22",
+        "author_role": "social_worker",
+        "author_name": "Linda Gomez, LCSW",
+        "summary": "Housing progress review. Marcus completed preliminary background screening for transitional veteran apartment complex. Coordinated travel vouchers for municipal interview.",
+        "sensitive_categories": ["social_determinants"],
+        "risk_level": "low",
+        "quality_score": 0.95
+      }
+    ]
+  },
+  {
+    "client_id": "MH-203",
+    "preferred_name": "Priya Patel",
+    "pronouns": "she/they",
+    "consent_matrix": {
+      "share_trauma_history": false,
+      "share_medical_diagnosis": true,
+      "share_social_determinants": true,
+      "share_substance_history": false,
+      "share_third_party": false,
+      "allowed_roles": ["counsellor", "social_worker", "duty_team", "medical_clinician"]
+    },
+    "active_goals": [
+      {
+        "id": "G-220",
+        "title": "Maternal Mental Health Stabilization & Postpartum Support",
+        "category": "psychological",
+        "status": "active",
+        "priority": "high",
+        "assigned_role": "counsellor"
+      },
+      {
+        "id": "G-221",
+        "title": "Affordable Childcare & Infant Nutrition Vouchers",
+        "category": "social",
+        "status": "in_progress",
+        "priority": "high",
+        "assigned_role": "social_worker"
+      },
+      {
+        "id": "G-222",
+        "title": "Domestic Safety Planning & Secure Tenancy",
+        "category": "housing",
+        "status": "in_progress",
+        "priority": "high",
+        "assigned_role": "social_worker"
+      }
+    ],
+    "pending_actions": [
+      {
+        "id": "A-220",
+        "assigned_role": "social_worker",
+        "description": "Connect client with WIC infant formula nutritional assistance and emergency diaper bank",
+        "due_date": "2026-10-14",
+        "status": "pending"
+      },
+      {
+        "id": "A-221",
+        "assigned_role": "counsellor",
+        "description": "Introduce 4-7-8 calming rhythm during nighttime infant feeding awakenings",
+        "due_date": "2026-10-19",
+        "status": "pending"
+      },
+      {
+        "id": "A-222",
+        "assigned_role": "medical_clinician",
+        "description": "Follow up on Edinburgh Postnatal Depression Scale (EPDS) score reassessment",
+        "due_date": "2026-10-25",
+        "status": "in_progress"
+      }
+    ],
+    "session_notes": [
+      {
+        "session_id": "EHR-20",
+        "date": "2026-06-18",
+        "author_role": "duty_team",
+        "author_name": "Nurse Kelly, RN",
+        "summary": "Community referral intake. 4-month postpartum mother screened with EPDS score 16 indicating elevated clinical risk. Disclosed emotional exhaustion, tearfulness, and lack of family support.",
+        "sensitive_categories": ["medical_diagnosis"],
+        "risk_level": "moderate",
+        "quality_score": 0.9
+      },
+      {
+        "session_id": "EHR-21",
+        "date": "2026-07-05",
+        "author_role": "medical_clinician",
+        "author_name": "Dr. Smith, MD",
+        "summary": "Perinatal psychiatric evaluation. Diagnosed with Peripartum Major Depressive Episode (DSM-5 F32.8). Discussed lactation-safe pharmacotherapy; initiated sertraline 25mg with weekly mood monitoring.",
+        "sensitive_categories": ["medical_diagnosis"],
+        "risk_level": "moderate",
+        "quality_score": 0.97
+      },
+      {
+        "session_id": "EHR-22",
+        "date": "2026-07-28",
+        "author_role": "social_worker",
+        "author_name": "Mark Davis, MSW",
+        "summary": "Home environment assessment. Priya explained past domestic coercion and economic control by former partner. Assisted with confidential mailing address and expedited state childcare subsidy application.",
+        "sensitive_categories": ["trauma_history", "social_determinants"],
+        "risk_level": "low",
+        "quality_score": 0.93
+      },
+      {
+        "session_id": "EHR-23",
+        "date": "2026-08-30",
+        "author_role": "counsellor",
+        "author_name": "Sarah Miller, LPC",
+        "summary": "Postpartum adjustment therapy. Priya processed feelings of maternal guilt and intrusive fears of inadequacy. Practiced self-compassion mantras and maternal bonding activities. Client requested domestic history be redacted from non-counselling notes.",
+        "sensitive_categories": ["trauma_history"],
+        "risk_level": "low",
+        "quality_score": 0.94
+      },
+      {
+        "session_id": "EHR-24",
+        "date": "2026-09-25",
+        "author_role": "social_worker",
+        "author_name": "Mark Davis, MSW",
+        "summary": "Social support check-in. Childcare voucher approved for 20 hours/week. Priya secured safe nursery placement and attended first community mother-infant playgroup.",
+        "sensitive_categories": ["social_determinants"],
+        "risk_level": "low",
+        "quality_score": 0.96
+      }
+    ]
+  },
+  {
+    "client_id": "MH-204",
+    "preferred_name": "David Kim",
+    "pronouns": "he/him",
+    "consent_matrix": {
+      "share_trauma_history": false,
+      "share_medical_diagnosis": false,
+      "share_social_determinants": true,
+      "share_substance_history": false,
+      "share_third_party": false,
+      "allowed_roles": ["counsellor", "social_worker", "duty_team", "medical_clinician"]
+    },
+    "active_goals": [
+      {
+        "id": "G-230",
+        "title": "Permanent Supportive Housing & Utility Stabilization",
+        "category": "housing",
+        "status": "in_progress",
+        "priority": "high",
+        "assigned_role": "social_worker"
+      },
+      {
+        "id": "G-231",
+        "title": "Bipolar Mood Charting & Sleep Rhythm Regulation",
+        "category": "coping",
+        "status": "active",
+        "priority": "high",
+        "assigned_role": "counsellor"
+      },
+      {
+        "id": "G-232",
+        "title": "Community Crisis Advance Directive",
+        "category": "social",
+        "status": "active",
+        "priority": "medium",
+        "assigned_role": "social_worker"
+      }
+    ],
+    "pending_actions": [
+      {
+        "id": "A-230",
+        "assigned_role": "social_worker",
+        "description": "File utility shut-off moratorium notice with electric utility company",
+        "due_date": "2026-10-11",
+        "status": "pending"
+      },
+      {
+        "id": "A-231",
+        "assigned_role": "duty_team",
+        "description": "Conduct bi-weekly evening wellness check call",
+        "due_date": "2026-10-09",
+        "status": "pending"
+      },
+      {
+        "id": "A-232",
+        "assigned_role": "counsellor",
+        "description": "Review weekly social rhythm chart and bedtime sleep logs",
+        "due_date": "2026-10-16",
+        "status": "pending"
+      }
+    ],
+    "session_notes": [
+      {
+        "session_id": "EHR-30",
+        "date": "2026-04-12",
+        "author_role": "duty_team",
+        "author_name": "Nurse Kelly, RN",
+        "summary": "Crisis mobile triage response. Client presented in acute hypomanic state with 4 nights of zero sleep, rapid pressured speech, and grandiose spending on studio art supplies. Activated crisis safety protocol.",
+        "sensitive_categories": ["medical_diagnosis"],
+        "risk_level": "crisis",
+        "quality_score": 0.95
+      },
+      {
+        "session_id": "EHR-31",
+        "date": "2026-04-20",
+        "author_role": "medical_clinician",
+        "author_name": "Dr. Smith, MD",
+        "summary": "Post-crisis stabilization review. Confirmed Bipolar I Disorder (DSM-5 F31.1). Re-established mood stabilizer lithium carbonate 600mg bid with regular serum lithium monitoring.",
+        "sensitive_categories": ["medical_diagnosis"],
+        "risk_level": "moderate",
+        "quality_score": 0.96
+      },
+      {
+        "session_id": "EHR-32",
+        "date": "2026-05-15",
+        "author_role": "social_worker",
+        "author_name": "Mark Davis, MSW",
+        "summary": "Post-crisis recovery support. David faces pending eviction and electric shutoff due to hypomanic financial exhaustion. Enrolled in community debt restructuring and applied for emergency energy relief grant.",
+        "sensitive_categories": ["social_determinants"],
+        "risk_level": "low",
+        "quality_score": 0.92
+      },
+      {
+        "session_id": "EHR-33",
+        "date": "2026-06-30",
+        "author_role": "counsellor",
+        "author_name": "Sarah Miller, LPC",
+        "summary": "Interpersonal and Social Rhythm Therapy (IPSRT). Established fixed sleep-wake anchors and daily meal routines. David identified racing thoughts as primary early warning sign.",
+        "sensitive_categories": [],
+        "risk_level": "low",
+        "quality_score": 0.94
+      },
+      {
+        "session_id": "EHR-34",
+        "date": "2026-08-10",
+        "author_role": "counsellor",
+        "author_name": "Sarah Miller, LPC",
+        "summary": "Psychoeducation session on mood charting. David disclosed severe past involuntary psychiatric hospitalization trauma and expressed fear of medical stigma. Updated consent to restrict medical diagnosis from general social worker handovers.",
+        "sensitive_categories": ["trauma_history", "medical_diagnosis"],
+        "risk_level": "low",
+        "quality_score": 0.93
+      },
+      {
+        "session_id": "EHR-35",
+        "date": "2026-09-18",
+        "author_role": "social_worker",
+        "author_name": "Mark Davis, MSW",
+        "summary": "Housing advocacy meeting. Energy grant paid past-due balance of $640. Landlord signed lease continuation agreement. Client is stable and practicing daily grounding exercises.",
+        "sensitive_categories": ["social_determinants"],
+        "risk_level": "low",
+        "quality_score": 0.95
+      }
+    ]
+  }
+]

@@ -1,14 +1,18 @@
 """
 Continuity Summary Synthesis Engine.
-Generates baseline (unfiltered dump) and prototype (consent-aware, role-tailored) handover summaries.
+Generates baseline (unfiltered dump) and prototype (consent-aware, role-tailored) handover summaries
+integrated with Semantic NLP, Provenance Tracking, and Crisis Break-Glass Overrides.
 """
 
+from typing import Optional
 from src.models.data_models import (
     ClientProfile,
     HandoverSummary,
     RoleEnum,
 )
 from src.engine.consent_engine import ConsentEngine
+from src.engine.nlp_consent_engine import ProvenanceTracker
+from src.engine.emergency_override import EmergencyOverrideEngine, EmergencyOverrideRequest
 from src.engine.quality_engine import QualityEngine
 
 
@@ -29,6 +33,8 @@ class SummaryEngine:
     def __init__(self, client: ClientProfile):
         self.client = client
         self.consent_engine = ConsentEngine(client)
+        self.provenance_tracker = ProvenanceTracker()
+        self.emergency_engine = EmergencyOverrideEngine()
         self.quality_engine = QualityEngine(client)
 
     def generate_baseline_summary(self, target_role: RoleEnum) -> str:
@@ -42,7 +48,10 @@ class SummaryEngine:
             "--- Raw Session Notes (Unfiltered & Un-redacted) ---",
         ]
         for note in self.client.session_notes:
-            lines.append(f"• Session {note.session_id} ({note.date or 'No date'}): {note.summary}")
+            author_info = getattr(note, "author_name", note.author_role.value)
+            lines.append(
+                f"• Session {note.session_id} ({note.date or 'No date'}) [{author_info}]: {note.summary}"
+            )
 
         lines.append("--- Active Goals ---")
         for goal in self.client.active_goals:
@@ -55,35 +64,78 @@ class SummaryEngine:
         lines.append("\n[Baseline Warning: No privacy redaction applied, no uncertainty flags raised.]")
         return "\n".join(lines)
 
-    def generate_prototype_summary(self, target_role: RoleEnum) -> HandoverSummary:
+    def generate_prototype_summary(
+        self,
+        target_role: RoleEnum,
+        emergency_request: Optional[EmergencyOverrideRequest] = None,
+    ) -> HandoverSummary:
         """
-        Generates a consent-aware, role-tailored continuity handover summary.
-        Redacts non-consented sensitive history while preserving active goals and pending tasks.
+        Generates a consent-aware, role-tailored continuity handover summary with provenance tracking.
+        If emergency_request is provided, executes break-glass consent override with audit logging.
         """
-        # 1. Run Consent Engine
-        consented_notes, redacted_notices, audit_trail = (
-            self.consent_engine.filter_session_notes(target_role)
-        )
+        # Check basic role permissions
+        if target_role not in self.client.consent_matrix.allowed_roles and not emergency_request:
+            msg = f"Role '{target_role.value}' is NOT authorized by client consent matrix."
+            return HandoverSummary(
+                client_id=self.client.client_id,
+                client_name=self.client.preferred_name,
+                target_role=target_role,
+                disclaimer_header=self.DISCLAIMER_TEXT,
+                operational_support_notes=[],
+                psychological_continuity_notes=[],
+                redacted_sensitive_topics=[f"[ACCESS RESTRICTED: {msg}]"],
+                active_goals=[],
+                pending_actions=[],
+                uncertainty_flags=[],
+                medical_disclaimer_active=True,
+                audit_trail=[f"[AUDIT BLOCK] {msg}"],
+            )
 
-        # 2. Run Quality Engine
-        uncertainty_flags = self.quality_engine.analyze_quality_and_uncertainty(
-            target_role
-        )
+        # 1. Handle Crisis Safety Override (IR-04)
+        override_active = False
+        override_audit_id = 0
+        if emergency_request:
+            success, msg, audit_rec = self.emergency_engine.validate_and_execute_override(
+                emergency_request, self.client
+            )
+            if success and audit_rec:
+                override_active = True
+                override_audit_id = audit_rec["log_id"]
 
-        # 3. Separate notes into operational vs psychological based on role focus
+        # 2. Run Semantic NLP Consent Engine with Provenance Tracking
+        if override_active:
+            consented_notes = [
+                f"Session {n.session_id} ({n.date or 'N/A'}) [{n.author_role.value}]: {n.summary} [SRC: Session {n.session_id} #UNSCRUBBED]"
+                for n in self.client.session_notes
+            ]
+            redacted_notices = ["[BREAK-GLASS OVERRIDE ACTIVE: All session details accessible for crisis team]"]
+            audit_trail = [f"[AUDIT BREAK-GLASS] Emergency override active by clinician {emergency_request.duty_clinician_id}"]
+        else:
+            consented_notes, redacted_notices, provenance_recs = (
+                self.provenance_tracker.process_and_redact_notes(
+                    self.client.session_notes, self.client.consent_matrix
+                )
+            )
+            audit_trail = [
+                f"[AUDIT PROVENANCE] Indexed {len(provenance_recs)} sentences across {len(self.client.session_notes)} session notes."
+            ]
+
+        # 3. Run Quality Engine for Uncertainty Flagging
+        uncertainty_flags = self.quality_engine.analyze_quality_and_uncertainty(target_role)
+
+        # 4. Filter notes by role focus
         operational_notes = []
         psychological_notes = []
 
         for note_str in consented_notes:
             if target_role == RoleEnum.SOCIAL_WORKER:
-                # Filter out pure clinical jargon and emphasize practical/operational context
                 operational_notes.append(note_str)
             elif target_role == RoleEnum.COUNSELLOR:
                 psychological_notes.append(note_str)
             else:
                 operational_notes.append(note_str)
 
-        # 4. Filter goals suitable for target role
+        # 5. Filter goals suitable for target role
         relevant_goals = []
         for g in self.client.active_goals:
             if target_role == RoleEnum.SOCIAL_WORKER and g.category in ["social", "housing", "logistics", "coping"]:
@@ -91,16 +143,15 @@ class SummaryEngine:
             elif target_role == RoleEnum.COUNSELLOR and g.category in ["psychological", "coping", "medical"]:
                 relevant_goals.append(g)
             else:
-                # Include for completeness if un-restricted
                 relevant_goals.append(g)
 
-        # 5. Filter pending actions for target role
+        # 6. Filter pending actions for target role
         relevant_actions = [
             a for a in self.client.pending_actions
-            if a.assigned_role == target_role or a.assigned_role == RoleEnum.DUTY_TEAM
+            if a.assigned_role in [target_role, RoleEnum.DUTY_TEAM, RoleEnum.MEDICAL_CLINICIAN]
         ]
 
-        return HandoverSummary(
+        summary = HandoverSummary(
             client_id=self.client.client_id,
             client_name=self.client.preferred_name,
             target_role=target_role,
@@ -114,3 +165,10 @@ class SummaryEngine:
             medical_disclaimer_active=True,
             audit_trail=audit_trail,
         )
+
+        if override_active and emergency_request:
+            summary = self.emergency_engine.apply_override_to_summary(
+                summary, emergency_request, override_audit_id
+            )
+
+        return summary

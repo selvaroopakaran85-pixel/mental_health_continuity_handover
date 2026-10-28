@@ -1,0 +1,37 @@
+name: Continuous Integration & Benchmark Verification
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test_and_benchmark:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Pytest Test Suite
+        run: |
+          PYTHONPATH=. pytest tests/ -v
+
+      - name: Run Quantitative Benchmark CLI Evaluation
+        run: |
+          PYTHONPATH=. python -m src.evaluation.benchmark
+
+      - name: Run Terminal CLI Handover Generator
+        run: |
+          PYTHONPATH=. python -m src.cli --mode compare --client MH-101 --role social_worker

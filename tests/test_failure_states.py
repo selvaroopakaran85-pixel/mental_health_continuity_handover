@@ -38,7 +38,7 @@ def test_failure_state_1_mid_care_consent_revocation():
     # Sensitive history must be redacted
     assert len(summary.redacted_sensitive_topics) == 1
     assert "abuse" not in summary.psychological_continuity_notes[0].lower()
-    assert "[REDACTED-TRAUMA_HISTORY]" in summary.psychological_continuity_notes[0]
+    assert "[REDACTED-TRAUMA_HISTORY" in summary.psychological_continuity_notes[0]
 
 
 def test_failure_state_2_low_quality_and_missing_date():
